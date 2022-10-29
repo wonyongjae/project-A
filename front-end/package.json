@@ -1,5 +1,5 @@
 {
-  "name": "wyj",
+  "name": "front-end",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,20 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "@mui/material": "^5.10.7",
-    "@nextui-org/react": "^1.0.0-beta.10",
-    "next": "12.3.1",
+    "next": "13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/node": "18.7.23",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
-    "eslint": "8.24.0",
-    "eslint-config-next": "12.3.1",
+    "@types/node": "18.11.7",
+    "@types/react": "18.0.24",
+    "@types/react-dom": "18.0.8",
+    "eslint": "8.26.0",
+    "eslint-config-next": "13.0.0",
     "typescript": "4.8.4"
   }
 }
