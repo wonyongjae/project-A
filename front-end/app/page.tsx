@@ -1,11 +1,14 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import NaviBar from './navibar';
+import { NextUIProvider } from '@nextui-org/react'
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         {/* <h1 className={styles.title} /> */}
+        
         <div className={styles.grid}>
           <a href="hhttps://wonyongjae.github.io/" className={styles.card}>
             <h2>Welcome to &rarr;</h2>
