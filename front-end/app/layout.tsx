@@ -1,5 +1,10 @@
+'use client';
 import './globals.css'
 import styles from './page.module.css'
+import NaviBar from './navibar';
+import Image from 'next/image'
+import * as React from 'react';
+import { NextUIProvider } from '@nextui-org/react';
 
 export default function RootLayout({
   children,
@@ -7,11 +12,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-      <html lang="ko">
+    <html lang="ko">
+      <NextUIProvider>
         <head>
           <title>first my nextjs 13</title>
-          <meta name="description" content="width=device-width, initial-scale=1.0" />
+          {/* <meta name="description" content="width=device-width, initial-scale=1.0" /> */}
         </head>
+        <header>
+          <NaviBar />
+        </header>
             <body>{children}</body>
         <footer className={styles.footer}>
           <a
@@ -22,6 +31,7 @@ export default function RootLayout({
             Hello World{' '}
           </a>
         </footer>
-      </html>
+      </NextUIProvider>
+    </html>
   )
 }
