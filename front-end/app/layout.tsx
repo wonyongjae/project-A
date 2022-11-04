@@ -6,6 +6,7 @@ import { NextUIProvider } from '@nextui-org/react';
 import Image from 'next/image'
 import Head from './head';
 import Navigator from './navigator';
+import Footer from './footer';
 
 export default function RootLayout({
   children,
@@ -21,16 +22,8 @@ export default function RootLayout({
               <Navigator />
             </header>
             {children}
-            </body>
-        <footer className={styles.footer}>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            Hello World{' '}
-          </a>
-        </footer>
+          </body>
+          <Footer />
       </NextUIProvider>
     </html>
   )

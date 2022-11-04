@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Navbar, Button, Link, Text, Card, Radio } from "@nextui-org/react";
+import OnOffSwitch from './onOffSwitch';
 
 export default function Navigator() {
   const [active, setActive] = useState(false);
@@ -9,10 +10,12 @@ export default function Navigator() {
   }
 
   return (
-      <Navbar isBordered variant="sticky">
+      <Navbar shouldHideOnScroll isBordered variant="sticky">
         <Navbar.Brand>
-          <Text b color="inherit" hideIn="xs">
-            ACME
+          <Text b color="secondary" hideIn="xs">
+            <a href='/'>
+              LOGO
+            </a>
           </Text>
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
@@ -22,6 +25,9 @@ export default function Navigator() {
           <Navbar.Link isActive={active} onClick={activeHandler} href="#">Empty</Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
+          <Navbar.Item>
+            <OnOffSwitch />
+          </Navbar.Item>
           <Navbar.Item>
             <Button bordered color="gradient" auto flat as={Link} href="#">
               Login
