@@ -19,10 +19,10 @@ export default function Navigator() {
           </Text>
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
-          <Navbar.Link isActive={active} onClick={activeHandler} href="https://wonyongjae.github.io/">GitHub</Navbar.Link>
+          <Navbar.Link isActive={active} onClick={activeHandler} href="http://localhost:3000/yongjae">Yongjae</Navbar.Link>
           <Navbar.Link isActive={active} onClick={activeHandler} href="https://www.notion.so/wonyongjae/">Notion</Navbar.Link>
           <Navbar.Link isActive={active} onClick={activeHandler} href="http://localhost:3000/dashboard">DashBoard</Navbar.Link>
-          <Navbar.Link isActive={active} onClick={activeHandler} href="#">Empty</Navbar.Link>
+          <Navbar.Link isActive={active} onClick={activeHandler} href="http://localhost:3000/settings">Settings</Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
           <Navbar.Item>
