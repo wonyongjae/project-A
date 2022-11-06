@@ -1,33 +1,52 @@
 'use client';
-import styles from '../../page.module.css';
 
-export default function Analytics() {
+import { Table, useAsyncList } from "@nextui-org/react";
+
+export default function App() {
+  const columns = [
+    { name: "Name", uid: "name" },
+    { name: "Height", uid: "height" },
+    { name: "Mass", uid: "mass" },
+    { name: "Birth Year", uid: "birth_year" },
+  ];
+  async function load({ signal, cursor }:any) {
+    // If no cursor is available, then we're loading the first page.
+    // Otherwise, the cursor is the next URL to load, as returned from the previous page.
+    const res = await fetch(
+      cursor || "https://swapi.py4e.com/api/people/?search=",
+      { signal }
+    );
+    const json = await res.json();
+    return {
+      items: json.results,
+      cursor: json.next,
+    };
+  }
+  const list = useAsyncList({ load });
   return (
-    <div className={styles.container}>
-        <main className={styles.main}>
-            <div>
-                <div className={styles.grid}>
-                <a href="#" className={styles.card}>
-                    <h2>first graph &rarr;</h2>
-                    <p>bubble</p>
-                </a>
-                </div>
-
-                <div className={styles.grid}>
-                <a href="#" className={styles.card}>
-                    <h2>second graph &rarr;</h2>
-                    <p>pie</p>
-                </a>
-                </div>
-
-                <div className={styles.grid}>
-                <a href="#" className={styles.card}>
-                    <h2>third graph &rarr;</h2>
-                    <p>bar</p>
-                </a>
-                </div>
-            </div>
-        </main>
-    </div>
+    <Table
+      bordered
+      shadow={false}
+      aria-label="Example table with dynamic content & infinity pagination"
+      css={{ minWidth: "100%", height: "calc($space$14 * 10)" }}
+      color="secondary"
+    >
+      <Table.Header columns={columns}>
+        {(column) => (
+          <Table.Column key={column.uid}>{column.name}</Table.Column>
+        )}
+      </Table.Header>
+      <Table.Body
+        items={list.items}
+        loadingState={list.loadingState}
+        onLoadMore={list.loadMore}
+      >
+        {(item) => (
+          <Table.Row key={item.name}>
+            {(key) => <Table.Cell>{item[key]}</Table.Cell>}
+          </Table.Row>
+        )}
+      </Table.Body>
+    </Table>
   );
-};
+}

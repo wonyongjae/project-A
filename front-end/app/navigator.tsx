@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navbar, Button, Link, Text, Card, Radio } from "@nextui-org/react";
-import OnOffSwitch from './onOffSwitch';
+import OnOffSwitch from '../components/onOffSwitch';
 
 export default function Navigator() {
   const [active, setActive] = useState(false);
@@ -20,8 +20,8 @@ export default function Navigator() {
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
           <Navbar.Link isActive={active} onClick={activeHandler} href="http://localhost:3000/yongjae">Yongjae</Navbar.Link>
-          <Navbar.Link isActive={active} onClick={activeHandler} href="https://www.notion.so/wonyongjae/">Notion</Navbar.Link>
           <Navbar.Link isActive={active} onClick={activeHandler} href="http://localhost:3000/dashboard">DashBoard</Navbar.Link>
+          <Navbar.Link isActive={active} onClick={activeHandler} href="#">GIS MAP</Navbar.Link>
           <Navbar.Link isActive={active} onClick={activeHandler} href="http://localhost:3000/settings">Settings</Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>

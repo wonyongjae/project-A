@@ -6,8 +6,8 @@ export default function Footer(){
         <footer className={styles.footer}>
             <a
               href="#"
-              target="_blank"
-              rel="noopener noreferrer"
+            //   target="_blank"
+            //   rel="noopener noreferrer"
               >
             Hello World{' '}
             </a>
