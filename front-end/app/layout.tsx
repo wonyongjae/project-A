@@ -1,12 +1,38 @@
 'use client';
-import './globals.css'
-import styles from './page.module.css'
+// import './globals.css'
+// import styles from './page.module.css'
 import * as React from 'react';
-import { NextUIProvider } from '@nextui-org/react';
-import Image from 'next/image'
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 import Head from './head';
 import Navigator from './navigator';
 import Footer from './footer';
+import { Suspense } from 'react';
+import Loading from './loading';
+
+// 1. Import `createTheme`
+import { createTheme, NextUIProvider } from "@nextui-org/react"
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+
+// 2. Call `createTheme` and pass your custom values
+const lightTheme = createTheme({
+  type: 'light',
+  theme: {
+    colors: {}, // optional
+  }
+})
+
+const darkTheme = createTheme({
+  type: 'dark',
+  theme: {
+    colors: {}, // optional
+  }
+})
 
 export default function RootLayout({
   children,
@@ -15,16 +41,29 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <NextThemesProvider
+        defaultTheme="system"
+        attribute="class"
+        value={{
+          light: lightTheme.className,
+          dark: darkTheme.className
+        }}
+      >
       <NextUIProvider>
-        <Head />
-          <body>
-            <header>
-              <Navigator />
-            </header>
-            {children}
-          </body>
+        <RecoilRoot>
+          <Head />
+          <Suspense fallback={<Loading />}>
+            <body>
+              <header>
+                  <Navigator />
+              </header>
+              {children}
+            </body>
+          </Suspense>
           <Footer />
+        </RecoilRoot>
       </NextUIProvider>
+      </NextThemesProvider>
     </html>
   )
 }
