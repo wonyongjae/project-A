@@ -1,14 +1,12 @@
 import { Input, Grid } from "@nextui-org/react";
 
-type Colors = "default" | "primary" | "secondary" | "success" | "warning" | "error" | any;
-
-export default function SearchBar({color}:Colors) {
+export default function Search() {
   return (
     <Grid.Container gap={4}>
       <Grid>
         <Input 
           placeholder="Let's Search"
-          status={color}
+          status="secondary"
         />
       </Grid>
     </Grid.Container>
