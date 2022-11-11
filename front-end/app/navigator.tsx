@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
-import { useRecoilValue } from "recoil";
 import { Navbar, Button, Link, Text } from "@nextui-org/react";
 import OnOffSwitch from "../components/OnOffSwitch";
 import Search from "../components/Search";
 import { LogInButton, LogOutButton, SignUpButton } from "../components/Buttons/Auth";
 import Users from '../components/users/Users';
-import { userAuthState } from "../stores/userAuth";
+import { useUserStateStore } from "../stores/justand";
 
 
 
@@ -31,8 +30,7 @@ const NavMenuList = ()=> {
 
 export default function Navigator() {
   const router = useRouter();
-  const userState = useRecoilValue(userAuthState);
-  const [active, setActive] = useState(false);
+  const userState = useUserStateStore((state:any) => state.userState);
 
   return (
       <Navbar shouldHideOnScroll isBordered variant="sticky">

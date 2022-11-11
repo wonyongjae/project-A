@@ -2,13 +2,6 @@
 // import './globals.css'
 // import styles from './page.module.css'
 import * as React from 'react';
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
 import Head from './head';
 import Navigator from './navigator';
 import Footer from './footer';
@@ -18,7 +11,6 @@ import Loading from './loading';
 // 1. Import `createTheme`
 import { createTheme, NextUIProvider } from "@nextui-org/react"
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
-
 // 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
   type: 'light',
@@ -50,7 +42,6 @@ export default function RootLayout({
         }}
       >
       <NextUIProvider>
-        <RecoilRoot>
           <Head />
           <Suspense fallback={<Loading />}>
             <body>
@@ -61,7 +52,6 @@ export default function RootLayout({
             </body>
           </Suspense>
           <Footer />
-        </RecoilRoot>
       </NextUIProvider>
       </NextThemesProvider>
     </html>

@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 import { useRouter } from 'next/navigation';
 import styles from './page.module.css';
 import { Button, Link, Text } from "@nextui-org/react";

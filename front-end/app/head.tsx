@@ -1,7 +1,7 @@
-// 'use client'
-import { usePathname } from 'next/navigation'
+'use client';
+import { usePathname } from 'next/navigation';
 
-function Head() {
+export default function Head() {
   const title = usePathname();
     return (
       <>
@@ -11,4 +11,3 @@ function Head() {
     );
   }
   
-  export default Head;
