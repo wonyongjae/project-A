@@ -1,2 +1,2 @@
 # project-A
-just simple
+project folder & file structure
