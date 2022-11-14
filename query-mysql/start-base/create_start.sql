@@ -1,5 +1,7 @@
+-- 스키마 생성
 CREATE SCHEMA shopdb;
 
+-- 테이블 생성
 CREATE TABLE shopdb.member_tb(
 	member_id char(8) not null,
 	member_nm char(5) not null,
