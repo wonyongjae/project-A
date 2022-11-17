@@ -1,19 +1,19 @@
-# project-A
-project folder & file structure
-
+# front-end
 ```bash
-front-end
---app
---pages
---components
---stores
---styles
+nextjs
 ```
 
+# Back-end
 ```bash
-graphql-apollo
+nestjs
 ```
 
+# Database
 ```bash
-query-mysql
+mysql
+```
+
+# Graphql
+```bash
+apollo
 ```
