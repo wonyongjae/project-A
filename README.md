@@ -3,17 +3,17 @@
 nextjs
 ```
 
-# Back-end
+# back-end
 ```bash
 nestjs
 ```
 
-# Database
+# database
 ```bash
 mysql
 ```
 
-# Graphql
+# graphql
 ```bash
 apollo
 ```
