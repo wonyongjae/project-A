@@ -1,0 +1,66 @@
+server {
+    # 아래 지정된 도메인으로 접근 할 수 있는 포트 설정
+    listen *:80 | *:8000;
+    server_name "project-A.com";
+
+    # prefix 문제를 해결하기 위해
+    # exact match 로 작성 => location / (x) location = / (o)
+    # / 경로에 접근 하게되면
+    location = / {
+        # status code 200 과 함께 hello 출력
+        return 200 "hello";
+    };
+
+    location = /main/ | /main {
+        return 200 "hello main";
+    };
+
+    location = /home/ | /home {
+        return 200 "hello home";
+    };
+}
+
+
+
+
+
+# reference: http://nginx.org/en/docs/http/ngx_http_core_module.html#location
+server {
+    listen *:82;
+    server_name "helloworld.com";
+
+    # case1: 정규식(대소문자 구분)
+    # curl helloworld.com:82/abc.gif
+    # curl helloworld.com:82/abc.Gif -> 호출안됨
+    location ~ \.(gif|jpg) {
+        return 200 "case1 image found";
+    }
+
+    # case2: 정규식(대소문자 구분 x)
+    # curl helloworld.com:82/abc.gif
+    # curl helloworld.com:82/abc.Gif
+    location ~* \.(gif|jpg) {
+        return 200 "case2 image found";
+    }    
+}
+
+
+
+
+
+server {
+    listen *:82;
+
+    location = / {
+        return 200 "helloworld";
+    }
+
+    # case1: 정규식(대소문자 구분 x)
+    # 준비 mkdir -p /tmp/images
+    #      touch /tmp/images/a.jpg    
+    # curl helloworld.com:82/images/a.jpg
+    location /images {
+        root /tmp;
+        try_files $uri =404;
+    }
+}
