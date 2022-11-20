@@ -6,6 +6,8 @@ import {
   Param,
   Patch,
   Post,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model';
 import { BoardsService } from './boards.service';
@@ -27,6 +29,7 @@ export class BoardsController {
   }
 
   @Post()
+  @UsePipes(ValidationPipe) // 핸들러 레벨에서 파이프 설정
   createBoard(
     @Body() createBoardDto: CreateBoardDto,
     // 리턴 값은 Board[] 가 아닌 Board 단일 객체이기 때문

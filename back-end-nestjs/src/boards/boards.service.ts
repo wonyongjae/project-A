@@ -15,6 +15,7 @@ export class BoardsService {
     return this.boards;
   }
 
+  // id 로 해당 id를 가진 게실물 찾기
   getBoardById(id: string): Board {
     return this.boards.find((board) => board.id === id);
   }
@@ -37,6 +38,7 @@ export class BoardsService {
   }
 
   updateBoardStatus(id: string, status: BoardStatus): Board {
+    // status를 수정할 게시물을 id로 먼저 찾아옴
     const board = this.getBoardById(id);
     board.status = status;
     return board;
