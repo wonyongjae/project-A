@@ -12,6 +12,7 @@ import {
 import { Board, BoardStatus } from './board.model';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
+import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe';
 
 // nest g co boards --no-spec
 @Controller('boards')
@@ -44,8 +45,8 @@ export class BoardsController {
 
   @Patch('/:id/status')
   updateBoardStatus(
-    @Param('id') id: string,
-    @Body('status') status: BoardStatus,
+    @Param('id') id: string, // status 값을 검증하는 파이프 라인 아규먼트 레벨로 추가
+    @Body('status', BoardStatusValidationPipe) status: BoardStatus,
   ): Board {
     return this.boardsService.updateBoardStatus(id, status);
   }

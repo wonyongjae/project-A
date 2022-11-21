@@ -1,4 +1,4 @@
-import { Injectable, Param } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model';
 // npm i uuid --save
 // 유니크한 id 값을 만들어주는 라이브러리
@@ -17,7 +17,13 @@ export class BoardsService {
 
   // id 로 해당 id를 가진 게실물 찾기
   getBoardById(id: string): Board {
-    return this.boards.find((board) => board.id === id);
+    const found = this.boards.find((board) => board.id === id);
+    // id 값으로 찾은 게시물이 없을 경우
+    if (!found) {
+      // 찾는 게시물이 없음을 알려주는 예외처리 메세지 발생
+      throw new NotFoundException(`Not Found Board With ID : ${id}`);
+    }
+    return found;
   }
 
   createBoard(createBoardDto: CreateBoardDto) {
@@ -34,7 +40,9 @@ export class BoardsService {
   }
 
   deleteBoard(id: string): void {
-    this.boards = this.boards.filter((board) => board.id !== id);
+    // id 로 찾은 값으로만 처리하기 위해 먼저 id 가 있는지 찾는 로직 추가
+    const found = this.getBoardById(id);
+    this.boards = this.boards.filter((board) => board.id !== found.id);
   }
 
   updateBoardStatus(id: string, status: BoardStatus): Board {
