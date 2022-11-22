@@ -1,5 +1,5 @@
 import { BadRequestException, PipeTransform } from '@nestjs/common';
-import { BoardStatus } from '../board.model';
+import { BoardStatus } from '../board-status.enum';
 
 // 커스텀 파이프 생성해서 사용
 // board status 값을 변경하려 할 때, status를 검증하는 파이프 라인
