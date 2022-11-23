@@ -9,7 +9,7 @@ export default function SignUp(){
                 <Card.Body>
                   <Row justify="center" align="center">
                     <Grid.Container gap={4}>
-                      <Col align="center">
+                      <Col>
                         <Grid>
                           <Input
                             clearable

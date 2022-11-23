@@ -33,15 +33,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <NextThemesProvider
-        defaultTheme="system"
-        attribute="class"
-        value={{
-          light: lightTheme.className,
-          dark: darkTheme.className
-        }}
-      >
       <NextUIProvider>
+        <NextThemesProvider
+          defaultTheme="system"
+          attribute="class"
+          value={{
+            light: lightTheme.className,
+            dark: darkTheme.className
+          }}
+        >
           <Head />
           <Suspense fallback={<Loading />}>
             <body>
@@ -52,8 +52,8 @@ export default function RootLayout({
             </body>
           </Suspense>
           <Footer />
+        </NextThemesProvider>
       </NextUIProvider>
-      </NextThemesProvider>
     </html>
   )
 }
