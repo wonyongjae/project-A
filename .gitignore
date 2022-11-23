@@ -6,3 +6,6 @@ gisMap/
 front-end/package-lock.json
 .gitignore
 front-end/.barbelrc
+front-end-nextjs
+front-end-next
+back-end-nestjs
