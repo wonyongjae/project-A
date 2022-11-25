@@ -13,6 +13,10 @@ public class MemoryMemberRepository implements MemberRepository {
     private static Map<Long, Member> store = new HashMap<>();
     private static Long sequence = 0L;
 
+    public void clearStore() {
+        store.clear();
+    }
+
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
